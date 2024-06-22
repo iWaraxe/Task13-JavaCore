@@ -15,7 +15,7 @@ public class MainOption2 {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.println("Enter a number if you want to:");
+            System.out.println("Enter a number if you to:");
             System.out.println("1) Get information about all movie disks");
             System.out.println("0) Exit");
             int choice = scanner.nextInt();
