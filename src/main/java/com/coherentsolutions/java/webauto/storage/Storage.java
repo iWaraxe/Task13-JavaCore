@@ -21,64 +21,42 @@ public class Storage implements IStorage {
 
     @Override
     public IDisk getBy(String name) {
-        for (IDisk disk : disks.values()) {
-            if (disk.getName().equals(name)) {
-                return disk;
-            }
-        }
-        return null;
+        return disks.values().stream()
+                .filter(disk -> disk.getName().equals(name))
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public List<IDisk> getAllBy(Type type) {
-        List<IDisk> result = new ArrayList<>();
-        for (IDisk disk : disks.values()) {
-            if (disk.getType() == type) {
-                result.add(disk);
-            }
-        }
-        return result;
+        return disks.values().stream()
+                .filter(disk -> disk.getType() == type)
+                .toList();
     }
 
     @Override
     public List<IDisk> getAllBy(int rating) {
-        List<IDisk> result = new ArrayList<>();
-        for (IDisk disk : disks.values()) {
-            if (disk.getRating() == rating) {
-                result.add(disk);
-            }
-        }
-        return result;
+        return disks.values().stream()
+                .filter(disk -> disk.getRating() == rating)
+                .toList();
     }
 
     @Override
     public boolean isExistedBy(Type type) {
-        for (IDisk disk : disks.values()) {
-            if (disk.getType() == type) {
-                return true;
-            }
-        }
-        return false;
+        return disks.values().stream()
+                .anyMatch(disk -> disk.getType() == type);
     }
 
     @Override
     public boolean isExistedBy(String name) {
-        for (IDisk disk : disks.values()) {
-            if (disk.getName().equals(name)) {
-                return true;
-            }
-        }
-        return false;
+        return disks.values().stream()
+                .anyMatch(disk -> disk.getName().equals(name));
     }
 
     @Override
     public List<IDisk> getAllBy(String year) {
-        List<IDisk> result = new ArrayList<>();
-        for (IDisk disk : disks.values()) {
-            if (disk.getInventoryDate().toString().contains(year)) {
-                result.add(disk);
-            }
-        }
-        return result;
+        return disks.values().stream()
+                .filter(disk -> Integer.toString(disk.getInventoryDate().getYear()).equals(year))
+                .toList();
     }
 }

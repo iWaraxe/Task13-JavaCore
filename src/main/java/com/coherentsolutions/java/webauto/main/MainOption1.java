@@ -13,8 +13,6 @@ public class MainOption1 {
         StorageUtil.fillStorage(storage);
 
         List<IDisk> movies = storage.getAllBy(Type.MOVIE);
-        for (IDisk movie : movies) {
-            System.out.println(movie.toString());
-        }
+        movies.forEach(movie -> System.out.println(movie.toString()));
     }
 }

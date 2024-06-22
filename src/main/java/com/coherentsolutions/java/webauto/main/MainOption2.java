@@ -22,11 +22,14 @@ public class MainOption2 {
 
             if (choice == 0) {
                 break;
-            } else if (choice == 1) {
-                List<IDisk> movies = storage.getAllBy(Type.MOVIE);
-                for (IDisk movie : movies) {
-                    System.out.println(movie.toString());
+            }
+
+            switch (choice) {
+                case 1 -> {
+                    List<IDisk> movies = storage.getAllBy(Type.MOVIE);
+                    movies.forEach(movie -> System.out.println(movie.toString()));
                 }
+                default -> System.out.println("Invalid choice. Please try again.");
             }
         }
         scanner.close();

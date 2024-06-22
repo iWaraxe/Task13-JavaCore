@@ -1,15 +1,15 @@
 // Disk.java
 package com.coherentsolutions.java.webauto.disks;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public abstract class Disk implements IDisk {
     private Type type;
     private String name;
-    private Date inventoryDate;
+    private LocalDate inventoryDate;
     private int rating;
 
-    public Disk(Type type, String name, Date inventoryDate, int rating) {
+    public Disk(Type type, String name, LocalDate inventoryDate, int rating) {
         this.type = type;
         this.name = name;
         this.inventoryDate = inventoryDate;
@@ -27,7 +27,7 @@ public abstract class Disk implements IDisk {
     }
 
     @Override
-    public Date getInventoryDate() {
+    public LocalDate getInventoryDate() {
         return inventoryDate;
     }
 
@@ -38,6 +38,6 @@ public abstract class Disk implements IDisk {
 
     @Override
     public String toString() {
-        return "Type: " + type + ", Name: " + name + ", Inventory Date: " + inventoryDate + ", Rating: " + rating;
+        return getInfo();
     }
 }
